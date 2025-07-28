@@ -1,0 +1,24 @@
+#type: args
+
+train:
+  epochs: 100  ## Pre-raining epochs using IIF masking
+  batch_size: 16
+  lr: 1.0e-4   
+
+model:
+  timeemb: 128         ## Time embedding dimension
+  featureemb: 16       ## Feature embedding dimension
+
+  
+embedding:
+  timeemb: 128
+  featureemb: 16
+  num_feat: 38         ## Total number of features in the MTS (K)
+  num_timestamps: 100   ## Total number of timestamps in the MTS (L)
+  classes: 2
+  channels: 16          ## Number of embedding dimension in both temporal and spatial encoders
+  nheads: 8             ## Number of heads in the temporal and spatial encoders
+  seq_len : 100
+  hidden_dim: 128
+  "alpha": 0.5
+  "beta": 0.5
