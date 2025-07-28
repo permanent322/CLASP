@@ -2,7 +2,7 @@
 
 train:
   epochs: 100  ## Pre-raining epochs using IIF masking
-  batch_size: 24
+  batch_size: 32
   lr: 1.0e-4   
 
 model:

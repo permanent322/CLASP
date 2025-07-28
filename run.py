@@ -55,7 +55,7 @@ device = torch.device(args.device if torch.cuda.is_available() else "cpu")
 
 batch_size = config["train"]["batch_size"]
 foldername = "./save/Anomaly_Detection/" + args.dataset + "/run_" + str(args.run) +"/"
-train_loader, valid_loader, test_loader = anomaly_detection_dataloader(dataset_name = args.dataset, batch_size = 16)
+train_loader, valid_loader, test_loader = anomaly_detection_dataloader(dataset_name = args.dataset, batch_size = 32)
 
 epochs = config["train"]["epochs"]
 # 把config保存到文件中
