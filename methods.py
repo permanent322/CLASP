@@ -354,15 +354,23 @@ def test(model, train_loader,test_loader, result_folder, device, anomaly_ratio=1
         print("pred:   ", pred.shape)
         print("gt:     ", gt.shape)
 
-        print("########## not use detection adjustment ############")
+        # print("########## not use detection adjustment ############")
 
         accuracy = accuracy_score(gt, pred)
         precision, recall, f_score, support = precision_recall_fscore_support(gt, pred, average='binary',
                                                                                 zero_division=1)
+        
+        with open(result_folder + 'results.txt', "a") as file:
+            file.write("not use detection adjustment\n")
+            file.write("anomaly_ratio: {:0.4f}\n".format(anomaly_ratio))
+            file.write("threshold: {:0.4f}\n".format(threshold))
+            file.write("Accuracy : {:0.4f}, Precision : {:0.4f}, Recall : {:0.4f}, F-score : {:0.4f} \n".format(
+                accuracy, precision,
+                recall, f_score))
 
-        print("Accuracy : {:0.4f}, Precision : {:0.4f}, Recall : {:0.4f}, F-score : {:0.4f} ".format(
-            accuracy, precision,
-            recall, f_score))
+        # print("Accuracy : {:0.4f}, Precision : {:0.4f}, Recall : {:0.4f}, F-score : {:0.4f} ".format(
+        #     accuracy, precision,
+        #     recall, f_score))
 
         # (4) detection adjustment
         gt, pred = adjustment(gt, pred)
@@ -386,6 +394,7 @@ def test(model, train_loader,test_loader, result_folder, device, anomaly_ratio=1
             accuracy, precision,
             recall, f_score))
         with open(result_folder + 'results.txt', "a") as file:
+            file.write("use detection adjustment\n")
             file.write("threshold: {:0.4f}\n".format(threshold))
             file.write("Accuracy : {:0.4f}, Precision : {:0.4f}, Recall : {:0.4f}, F-score : {:0.4f} ".format(
                 accuracy, precision,
