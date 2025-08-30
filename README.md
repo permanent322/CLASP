@@ -1,9 +1,9 @@
-# CLTSAD
+# CLASP
 
 ### Create an virtual environment
 ```
-conda create --name cltsad python=3.9 -y
-conda activate  cltsad
+conda create --name clasp python=3.9 -y
+conda activate  clasp
 pip install -r requirements.txt
 ```
 
